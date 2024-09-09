@@ -20,7 +20,7 @@ const guestRouter = createBrowserRouter([
 
 const userRouter = createBrowserRouter([
     {
-        path: '/home',
+        path: '/',
         element: <>
             <Header />
             <Outlet />
@@ -33,6 +33,7 @@ const userRouter = createBrowserRouter([
 
 export default function AppRouter() {
     const { user } = AuthHook();
+    console.log(user?.id)
     const finalRouter = user?.id ? userRouter : guestRouter
 
   return (

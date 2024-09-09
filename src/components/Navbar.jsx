@@ -3,11 +3,13 @@ import { Navbar, Typography, Button, IconButton, Collapse } from "@material-tail
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import AuthHook from "../hooks/AuthHook";
+import { useNavigate } from "react-router-dom";
 
 export default function StickyNavbar() {
     const { user, logout } = AuthHook();
     const [openNav, setOpenNav] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         window.addEventListener(
@@ -52,9 +54,9 @@ export default function StickyNavbar() {
               ))}
             </ul>
             <div className="flex items-center gap-x-1">
-              {user?.user_id ? (
+              {user?.id ? (
                 <>
-                    <Button variant="gradient" size="sm" onClick={ () => logout() } className="hidden md:inline-block">
+                    <Button variant="gradient" size="sm" onClick={ () => { logout(); navigate('/') } } className="hidden md:inline-block">
                         Log Out
                     </Button>
                 </>
@@ -93,9 +95,9 @@ export default function StickyNavbar() {
                 ))}
             </ul>
             <div className="flex items-center mt-4 gap-x-1">
-            {user?.user_id ? (
+            {user?.id ? (
                 <>
-                    <Button fullWidth variant="gradient" size="md" onClick={ () => logout() } className="">
+                    <Button fullWidth variant="gradient" size="md" onClick={ () =>  { logout(); navigate('/') } } className="">
                         Log Out
                     </Button>
                 </>

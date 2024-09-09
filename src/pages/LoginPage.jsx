@@ -10,7 +10,7 @@ import { Turnstile } from '@marsidev/react-turnstile'
 import { toast } from "react-toastify";
 
 export default function LoginPage() {
-    const { setUser } = AuthHook();
+    const { user, setUser } = AuthHook();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -63,7 +63,9 @@ export default function LoginPage() {
           autoClose: 1500,
           onClose: () => {
             setUser(response2.data.data.user);
-            navigate('/home');
+            if(user){
+              navigate('/home')
+            }
           }
         });
       }

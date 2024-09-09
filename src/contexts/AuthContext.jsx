@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
+// import { useNavigate } from "react-router-dom";
 import axios from "../configs/axios";
 import { createContext, useEffect, useState } from "react";
 
@@ -8,6 +9,7 @@ const AuthContext = createContext();
 function AuthContextProvider(props) {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false)
+    // const navigate = useNavigate();
 
     const token = sessionStorage.getItem('accessToken')
 
@@ -44,6 +46,7 @@ function AuthContextProvider(props) {
         if(rs.status === 200){
             sessionStorage.removeItem("accessToken")
             setUser(null);
+            // navigate('/')
         }
     };
 
