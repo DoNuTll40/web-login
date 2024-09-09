@@ -33,7 +33,7 @@ const userRouter = createBrowserRouter([
 
 export default function AppRouter() {
     const { user } = AuthHook();
-    const finalRouter = user?.user_id ? userRouter : guestRouter
+    const finalRouter = user?.id ? userRouter : guestRouter
 
   return (
     <RouterProvider router={finalRouter} />
