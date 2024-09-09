@@ -3,6 +3,7 @@ import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage";
 import AuthHook from "../hooks/AuthHook";
 import Header from "../components/Header";
+import RegisterPage from "../pages/RegisterPage";
 
 const guestRouter = createBrowserRouter([
     {
@@ -11,7 +12,8 @@ const guestRouter = createBrowserRouter([
             <Outlet />
         </>,
         children: [
-            { index: true, element: <LoginPage /> }
+            { index: true, element: <LoginPage /> },
+            { path: "/sign-up", element: <RegisterPage /> }
         ]
     }
 ])

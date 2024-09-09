@@ -5,6 +5,8 @@ import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import AuthHook from "../hooks/AuthHook";
+import { useNavigate } from "react-router-dom";
+import { Turnstile } from '@marsidev/react-turnstile'
 
 export default function LoginPage() {
     const { setUser } = AuthHook();
@@ -12,6 +14,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [viewPassword, setViewPassword] = useState(true);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +42,7 @@ export default function LoginPage() {
 
       if(response2.status === 200){
         setUser(response2.data.data.user)
+        navigate('/')
       }
 
     } catch (err) {
@@ -104,11 +108,13 @@ export default function LoginPage() {
           </div>
         </div>
         <div className="flex gap-2 flex-col">
-          <hr className="my-4" />
+          <hr className="mt-4 mb-1" />
+          <Turnstile className="mx-auto" siteKey="0x4AAAAAAAjDn7DyUTfoZ4vK" /> 
+          <hr className="mb-4 mt-1" />
           <Button type="submit" className="w-full bg-blue-900" size="md">
             เข้าสู่ระบบ
           </Button>
-          <Button className="w-full bg-blue-900" size="md">
+          <Button onClick={ () => navigate('/sign-up') } className="w-full bg-blue-900" size="md">
             สมัครสมาชิก
           </Button>
         </div>
