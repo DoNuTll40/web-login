@@ -193,7 +193,7 @@ export default function RegisterPage() {
           <Button type="submit" className="w-full bg-blue-900" size="md">
             สมัครสมาชิก
           </Button>
-          <Button onClick={() => navigate('/login')} className="w-full bg-blue-900" size="md">
+          <Button onClick={() => navigate('/')} className="w-full bg-blue-900" size="md">
             มีบัญชีอยู่แล้ว? เข้าสู่ระบบ
           </Button>
         </div>
