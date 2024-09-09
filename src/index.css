@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.swiper-custom .swiper-pagination-bullet {
+    @apply bg-white opacity-70 scale-75 md:scale-100 shadow-md;
+}
+
+.swiper-custom .swiper-pagination-bullet-active {
+    @apply bg-blue-800 rounded-full w-[30px] scale-90 md:scale-110 shadow-md opacity-100 transition-all ease-in-out duration-300;
+}
