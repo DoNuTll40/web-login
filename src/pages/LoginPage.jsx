@@ -76,7 +76,7 @@ export default function LoginPage() {
         autoClose: 3000,
       });
       console.log(err);
-      setError(err.response.data.result);
+      setError(err.response.data.result || err.response.data.error);
     }
   };
 
