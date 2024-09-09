@@ -15,6 +15,14 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [viewPassword, setViewPassword] = useState(true);
   const navigate = useNavigate();
+  const [tokenMain, setTokenMain] = useState("");
+
+  const hdlCheckToken = (token) => {
+
+    if(token){
+      setTokenMain(token)
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +31,10 @@ export default function LoginPage() {
     if (username.trim() === "" || password.trim() === "") {
         setError("กรุณากรอกข้อมูลให้ครบ");
         return;
+    }
+
+    if(!tokenMain){
+      return alert("รอระบบตรวจสอบ")
     }
 
     try {
@@ -109,7 +121,11 @@ export default function LoginPage() {
         </div>
         <div className="flex gap-2 flex-col">
           <hr className="mt-4 mb-1" />
-          <Turnstile className="mx-auto" siteKey="0x4AAAAAAAjDn7DyUTfoZ4vK" /> 
+          <Turnstile className="mx-auto" 
+            siteKey="0x4AAAAAAAjDn7DyUTfoZ4vK"
+            onSuccess={(token) => hdlCheckToken(token) }
+            size="compact"
+            /> 
           <hr className="mb-4 mt-1" />
           <Button type="submit" className="w-full bg-blue-900" size="md">
             เข้าสู่ระบบ
