@@ -20,7 +20,7 @@ const guestRouter = createBrowserRouter([
 
 const userRouter = createBrowserRouter([
     {
-        path: '/',
+        path: '/home',
         element: <>
             <Header />
             <Outlet />

@@ -63,7 +63,7 @@ export default function LoginPage() {
           autoClose: 1500,
           onClose: () => {
             setUser(response2.data.data.user);
-            navigate('/');
+            navigate('/home');
           }
         });
       }
