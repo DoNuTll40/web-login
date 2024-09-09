@@ -139,7 +139,7 @@ export default function LoginPage() {
         <div className="flex gap-2 flex-col">
           <hr className="mt-4 mb-1" />
           <Turnstile className="mx-auto" 
-            siteKey="1x00000000000000000000AA"
+            siteKey="0x4AAAAAAAjDn7DyUTfoZ4vK"
             onSuccess={(token) => hdlCheckToken(token) }
             size="compact"
             /> 
