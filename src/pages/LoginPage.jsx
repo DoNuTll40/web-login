@@ -7,6 +7,7 @@ import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import AuthHook from "../hooks/AuthHook";
 import { useNavigate } from "react-router-dom";
 import { Turnstile } from '@marsidev/react-turnstile'
+import { toast } from "react-toastify";
 
 export default function LoginPage() {
     const { setUser } = AuthHook();
@@ -37,6 +38,8 @@ export default function LoginPage() {
       return alert("รอระบบตรวจสอบ")
     }
 
+    const loadingToast = toast.loading('กำลังโหลด...');
+
     try {
       const response = await axios.post("/auth/sign-in",{
           user_username: username,
@@ -52,12 +55,26 @@ export default function LoginPage() {
         withCredentials: true
       })
 
-      if(response2.status === 200){
-        setUser(response2.data.data.user)
-        navigate('/')
+      if (response2.status === 200) {
+        toast.update(loadingToast, {
+          render: 'เข้าสู่ระบบสำเร็จ',
+          type: 'success',
+          isLoading: false,
+          autoClose: 1500,
+          onClose: () => {
+            setUser(response2.data.data.user);
+            navigate('/');
+          }
+        });
       }
 
     } catch (err) {
+      toast.update(loadingToast, {
+        render: 'ไม่สามารถเข้าสู่ระบบได้ กรุณาลองใหม่อีกครั้ง',
+        type: 'error',
+        isLoading: false,
+        autoClose: 3000,
+      });
       console.log(err);
       setError(err.response.data.result);
     }
@@ -122,7 +139,7 @@ export default function LoginPage() {
         <div className="flex gap-2 flex-col">
           <hr className="mt-4 mb-1" />
           <Turnstile className="mx-auto" 
-            siteKey="0x4AAAAAAAjDn7DyUTfoZ4vK"
+            siteKey="1x00000000000000000000AA"
             onSuccess={(token) => hdlCheckToken(token) }
             size="compact"
             /> 
