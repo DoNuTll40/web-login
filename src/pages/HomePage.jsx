@@ -64,7 +64,7 @@ export default function HomePage() {
       <div className="my-4 bg-white shadow-md p-2 rounded-md">
         <p className="text-lg font-bold">หมวดของ</p>
         <div className="my-2">
-          <ButtonGroup variant="text">
+          <ButtonGroup className="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9" variant="text">
             <Button>คอมพิวเตอร์</Button>
             <Button>โน๊ตบุ๊ค</Button>
             <Button>มือถือ</Button>
