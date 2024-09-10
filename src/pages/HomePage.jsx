@@ -8,6 +8,7 @@ import {
   TabsHeader,
 } from "@material-tailwind/react";
 import SlideShow from "../components/SlideShow";
+import { TableUser } from "../components/TableUser";
 
 export default function HomePage() {
   const data = [
@@ -98,6 +99,9 @@ export default function HomePage() {
             ))}
           </TabsBody>
         </Tabs>
+      </div>
+      <div>
+        <TableUser />
       </div>
     </div>
   );
